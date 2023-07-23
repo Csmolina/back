@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Service;
 
@@ -53,14 +55,12 @@ public class ComentarioService {
         return ListCom;
     }
 
-    public Optional setComentario(Comentario coment) throws IOException {
-
+    public Comentario setComentario(Comentario coment) throws IOException {   
         ObjectMapper mapper = new ObjectMapper();
-        Optional optional = Optional.empty();
         coment.setId(BuscarId());
         comentList.addAll(Arrays.asList(coment));
         mapper.writeValue(new File("data.json"), comentList);
-        return optional;
+        return coment;
 
     }
 
@@ -86,7 +86,9 @@ public class ComentarioService {
     }
 
     public int setSubComentario(Integer id, Comentario subcom) throws IOException {
+      
         ObjectMapper mapper = new ObjectMapper();
+
         Comentario comentarioEncontrado = null;
         subcom.setId(BuscarId());
         for (int i = 0; i < comentList.size(); i++) {

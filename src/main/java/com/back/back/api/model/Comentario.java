@@ -9,16 +9,18 @@ public class Comentario {
     private String name;
     private String url;
     private ArrayList<Comentario> subcomentario;
+    private String fechahora;
     public Comentario(){
 
     }
-    public Comentario(int id, String comentario, int puntaje, String name, String url, ArrayList<Comentario> subcomentario) {
+    public Comentario(int id, String comentario, int puntaje, String name, String url, ArrayList<Comentario> subcomentario, String fechahora) {
         this.id = id;
         this.comentario = comentario;
         this.puntaje = puntaje;
         this.name = name;
         this.url = url;
         this.subcomentario = subcomentario;
+        this.fechahora=fechahora;
     }
     public Comentario buscarComentarioPorId(int idBuscado) {
         if (this.id == idBuscado) {
@@ -55,6 +57,12 @@ public class Comentario {
     }
     public void setId(int id) {
         this.id = id;
+    }
+     public String getFechahora() {
+        return fechahora;
+    }
+    public void setFechahora(String fechahora) {
+        this.fechahora = fechahora;
     }
     public String getComentario() {
         return comentario;
